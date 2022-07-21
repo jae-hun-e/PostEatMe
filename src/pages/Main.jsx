@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import "/Users/choiyun/post_eat_me/src/pages.css"
+import "../pages.css"
 
 const main = "POST-EAT\nME!";
 const Main = () => {
