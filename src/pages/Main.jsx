@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from "styled-reset";
+import Cake from '../assets/cake.svg';
 
 const main = "POST-EAT\nME!";
 
@@ -11,7 +12,6 @@ const GlobalStyles = createGlobalStyle`
         white-space: pre-line;
         text-align: center;
         background-color: #F2E5D5;
-        }
     }
 `;
 
@@ -22,7 +22,9 @@ const Main = () => {
             <GlobalStyles />
             <MainText>{main}</MainText>
             <br />
-            <StartBtn><Link to="/MainLogin" style={{textDecoration:'none', color: 'black'}}>START</Link></StartBtn>
+            <StartBtn><Link to="/MainLogin" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>START</Link></StartBtn>
+            <BtmBx><Img src={Cake} /> </BtmBx>
+            
         </>
     )
 }
@@ -49,4 +51,17 @@ border-radius: 20px;
 background-color: #f0d596;
 font-size: 18px;
 font-family: 'SCDream';
+`
+
+const Img = styled.img`
+    margin-top: -21%;
+    height: 210px;
+`
+
+const BtmBx = styled.div`
+    background-color: #4F8275;
+    margin-top: 39%;
+    height: 130px;
+    border-color: black;
+    border-width: 10px;
 `
