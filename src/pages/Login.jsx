@@ -24,7 +24,7 @@ const Login = () => {
             <Login1>{main}</Login1>
             <form>
                 <Login2>
-                    <Btn><Link to="/Share" style={{textDecoration:"none", color: "#568C7D"}}>로그인 및 회원가입</Link></Btn>
+                    <Btn><Link to="/Share" style={{textDecoration:"none", color: "#568C7D"}}>로그인 / 회원가입</Link></Btn>
                 </Login2>
                 <Input type='text' class='id' placeholder='이름'/>
                 <InputPw type='password' class='pw' placeholder='전화번호'/>
@@ -40,32 +40,28 @@ const Login = () => {
 export default Login;
 
 const Login1 = styled.div`
-    margin-top: 28%;
-    font-size: 26px;
+    margin-top: 140px;
+    font-size: 28px;
     color: #EC7698;
     text-shadow: -2px 0 #000, 0 3px rgb(47, 47, 47), 3px 0 rgb(47, 47, 47), 0 -2px #000;
     font-family: 'Forte';
 `
 
 const Login2 = styled.h2`
-    margin-top: 4%;
-    font-size: 18px;
+    // margin-top: 4%;
 `
 
 const Btn = styled.button`
     font-size: 16px;
     font-weight: bold;
-    width: 160px;
+    width: 200px;
     height: 28px;
-    border-width: 1.2px;
-    border-color: black;
-    border-radius: 20px;
-    background-color: #f0d596;
-    opacity: 0.3;
+    border-style: none;
+    background-color: #F2E5D5;
+    opacity: 0.5;
     font-family: 'SCDream';
 
     &:active {
-        background-color: #f0d596;
         opacity: 1;
     }
 `
@@ -74,11 +70,11 @@ const Input = styled.input`
     text-align:left;
     font-size: 14px;
     font-weight: bold;
-    padding-left: 14px;
-    height: 32px;
-    width: 250px;
-    margin-top : 4%;
-    border-radius: 16px;
+    padding-left: 20px;
+    height: 36px;
+    width: 260px;
+    margin-top : 12px;
+    border-radius: 40px;
     border-style: solid;
     border-width: 1.6px;
     border-color: #898989;

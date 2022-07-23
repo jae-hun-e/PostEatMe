@@ -5,6 +5,7 @@ import MainLogin from './pages/MainLogin.jsx';
 import Login from './pages/Login.jsx';
 import Memo from './pages/Memo.jsx';
 import Share from './pages/Share.jsx';
+import Open from './pages/Open.jsx'
 import './App.css';
 
 const App = () => {
@@ -15,10 +16,11 @@ const App = () => {
     <Route path="/memo" element={<Memo />}></Route>
     <Route path="/share" element={<Share />}></Route> */}
     <Route path="/" element={<Main />}></Route>
-    <Route path="/MainLogin" element={<MainLogin />}></Route>
+    <Route path="/mainLogin" element={<MainLogin />}></Route>
     <Route path="/login" element={<Login />}></Route>
     <Route path="/memo" element={<Memo />}></Route>
     <Route path="/share" element={<Share />}></Route>
+    <Route path="/open" element={<Open />}></Route>
   </Routes>
 };
 
