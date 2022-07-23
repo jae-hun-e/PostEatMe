@@ -18,8 +18,11 @@ const GlobalStyles = createGlobalStyle`
 const Main = () => {
 
     const ClickBtn = () => {
-        const btn = document.getElementById('btn');
-        btn.style.opacity = "1";
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        btn2.style.opacity = "1";
+        btn1.style.color = 'gray';
+
     }
 
     return (
@@ -27,11 +30,10 @@ const Main = () => {
             <GlobalStyles />
             <MainText>{main}</MainText>
             <br />
-            <StartBtn onClick={ClickBtn} style={{color: 'rgb(59, 59, 59)'}}>START</StartBtn>
+            <StartBtn id='btn1' onClick={ClickBtn} style={{color: 'rgb(59, 59, 59)'}}>START</StartBtn>
             <br />
-            <MemoBtn id='btn' style={{color: 'rgb(59, 59, 59)'}}><Link to="/Open" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>편지 보러가기!</Link></MemoBtn>
+            <MemoBtn id='btn2' style={{color: 'rgb(59, 59, 59)'}}><Link to="/Login" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>편지 보러가기!</Link></MemoBtn>
             <BtmBx><Img src={Cake} /> </BtmBx>
-            
         </>
     )
 }

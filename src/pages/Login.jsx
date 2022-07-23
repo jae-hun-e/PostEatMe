@@ -1,8 +1,9 @@
 import { isValidInputTimeValue } from '@testing-library/user-event/dist/utils';
-import React from 'react';
+import React, {useState, useRef } from 'react';
 import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from "styled-reset";
+import crl from '../assets/cereal.svg';
 
 const main = "POST-EAT ME!";
 
@@ -17,23 +18,56 @@ const GlobalStyles = createGlobalStyle`
 
 const Login = () => {
 
+    const [number, setNumber] = useState(2);
+
+    const onIncrease = () => {
+        if (number>0 && number<10)
+            setNumber(number+1);
+    }
+
+    const onDecrease = () => {
+        if (number>2 && number<11)
+            setNumber(number-1);
+    }
+
+    const clickLogin = () => {  
+        const Fst = document.getElementsByClassName('div');
+        Fst.style.position = 'auto';
+    }
+
+    const copy = () => {
+        const el = document.createElement('input');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert("링크 복사 완료! 친구들에게 공유해보세요.");
+    }
 
     return (
-        <>
+        <div style={{position:'fixed'}} class='div'>
             <GlobalStyles />
-            <Login1>{main}</Login1>
-            <form>
-                <Login2>
-                    <Btn><Link to="/Share" style={{textDecoration:"none", color: "#568C7D"}}>로그인 / 회원가입</Link></Btn>
-                </Login2>
-                <Input type='text' class='id' placeholder='이름'/>
-                <InputPw type='password' class='pw' placeholder='전화번호'/>
-            </form>
-            {/* <div><LoginLink style={{backgroundColor:'#457ABF'}}>facebook으로 로그인</LoginLink></div>
-            <div><LoginLink style={{backgroundColor:'#D94141'}}>google로 로그인</LoginLink></div>
-            <div><LoginLink style={{backgroundColor:'#6CBF45'}}>네이버로 로그인</LoginLink></div>
-            <div><LoginLink style={{backgroundColor:'#F2D027'}}>카카오로 로그인</LoginLink></div> */}
-        </>
+            <First class="fst">
+                <Login1>{main}</Login1>
+                <form>
+                    <Login2>
+                        <Btn onClick={clickLogin}>로그인 / 회원가입</Btn>
+                    </Login2>
+                    <Input type='text' class='id' placeholder='이름'/>
+                    <InputPw type='password' class='pw' placeholder='전화번호'/>
+                </form>
+                <Img src={crl} />
+            </First>
+            <Second>
+                <Main>
+                    <Div><Min onClick={onDecrease}>-</Min></Div>
+                    <Div><Num>{number} 명</Num></Div>
+                    <Div><Plus onClick={onIncrease}>+</Plus></Div>
+                </Main>
+                <ShareBtn onClick={copy}>URL 공유하기</ShareBtn>
+            </Second>
+        </div>
     )
 };
 
@@ -60,6 +94,8 @@ const Btn = styled.button`
     background-color: #F2E5D5;
     opacity: 0.5;
     font-family: 'SCDream';
+    textDecoration: none;
+    color: #568C7D;
 
     &:active {
         opacity: 1;
@@ -86,14 +122,63 @@ const InputPw = styled(Input)`
     margin-bottom: 100px;
 `
 
-// const LoginLink = styled.button`
-//     text-align: center;
-//     color: white;
-//     font-weight: bold;
-//     font-size: 14px;
-//     margin-top: 6px;
-//     height: 42px;
-//     width: 270px;
-//     border-radius: 18px;
-//     border-style: none;
-// `
+const Img = styled.img`
+    width: 240px;
+    margin-top: 240px;
+`
+
+const First = styled.div`
+    touch-action: none;
+
+`
+
+const Second = styled.div`
+    width: 100vw;
+`
+
+const Main = styled.div`
+    margin-top: 20%;
+`
+
+const Div = styled.div`
+    display: inline-block;
+    margin : 0 10px;
+`
+
+const Min = styled.button`
+    padding: 0%;
+    font-size: 26px;
+    color: black;
+    text-align: center;
+    line-height: 10px;
+    height: 22px;
+    width: 22px;
+    background-color: #F2E5D5;
+    border-radius: 50%;
+    border-width: 1.6px;
+    border-color: black;
+`
+
+const Plus = styled(Min)`
+`
+
+const Num = styled.p`
+    font-size: 20px;
+`
+
+const ShareBtn = styled.button`
+    margin-top: 44%;
+    text-align: center;
+    color: rgb(79, 79, 79);
+    font-weight: bold;
+    font-size: 18px;
+    height: 40px;
+    width: 210px;
+    background-color: #f0d596;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1.6px;
+    border-color: rgb(79, 79, 79);
+    font-family:'SCDream';
+    
+`
