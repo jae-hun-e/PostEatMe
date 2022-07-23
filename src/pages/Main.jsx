@@ -17,12 +17,19 @@ const GlobalStyles = createGlobalStyle`
 
 const Main = () => {
 
+    const ClickBtn = () => {
+        const btn = document.getElementById('btn');
+        btn.style.opacity = "1";
+    }
+
     return (
         <>
             <GlobalStyles />
             <MainText>{main}</MainText>
             <br />
-            <StartBtn><Link to="/MainLogin" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>START</Link></StartBtn>
+            <StartBtn onClick={ClickBtn} style={{color: 'rgb(59, 59, 59)'}}>START</StartBtn>
+            <br />
+            <MemoBtn id='btn' style={{color: 'rgb(59, 59, 59)'}}><Link to="/Open" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>편지 보러가기!</Link></MemoBtn>
             <BtmBx><Img src={Cake} /> </BtmBx>
             
         </>
@@ -32,7 +39,7 @@ const Main = () => {
 export default Main;
 
 const MainText = styled.div`
-    margin-top: 30%;
+    margin-top: 26%;
     font-size: 58px;
     color: #EC7698;
     text-shadow: -2px 0 #000, 0 4px rgb(47, 47, 47), 4px 0 rgb(47, 47, 47), 0 -2px #000;
@@ -40,28 +47,41 @@ const MainText = styled.div`
 `
 
 const StartBtn = styled.button`
-transition: 0.5s;
-width: 110px;
-height: 40px;
-margin-top: 2%;
-padding: 6px 20px;
-border-width: 1.6px;
-border-color: black;
-border-radius: 20px;
-background-color: #f0d596;
-font-size: 18px;
-font-family: 'SCDream';
+    transition: 0.5s;
+    width: 110px;
+    height: 40px;
+    margin-top: -4%;
+    padding: 6px 20px;
+    border-width: 1.6px;
+    border-color: black;
+    border-radius: 20px;
+    background-color: #f0d596;
+    font-size: 18px;
+    font-family: 'SCDream';
+`
+const MemoBtn = styled.button`
+    width: 170px;
+    height: 40px;
+    margin-top: 4%;
+    padding: 6px 20px;
+    border-width: 1.6px;
+    border-color: black;
+    border-radius: 20px;
+    background-color: #f0d596;
+    font-size: 18px;
+    font-family: 'SCDream';
+    opacity: 0;
 `
 
 const Img = styled.img`
-    margin-top: -21%;
+    margin-top: -30%;
     height: 210px;
 `
 
 const BtmBx = styled.div`
     background-color: #4F8275;
-    margin-top: 39%;
-    height: 130px;
+    margin-top: 36%;
+    height: 150px;
     border-color: black;
     border-width: 10px;
 `
