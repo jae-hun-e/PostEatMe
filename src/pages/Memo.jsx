@@ -42,14 +42,17 @@ const Input = styled.textarea`
     padding-top: 40px;
     line-height: 50px;
     text-align: center;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
     margin-top: 16%;
     height: 180px;
     width: 220px;
     border-radius: 50%;
     overflow: scroll;
     border-style: none;
+    font-family: 'SCDream';
+    ::placeholder {
+        color: rgb(195, 195, 195);
+    }
 `
 
 const Btn = styled.button`
@@ -62,4 +65,5 @@ const Btn = styled.button`
     font-size: 14px;
     font-weight: bold;
     color: black;
+    font-family: 'SCDream';
 `

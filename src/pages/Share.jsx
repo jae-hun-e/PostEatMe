@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
         white-space: pre-line;
         text-align: center;
         background-color: #F2E5D5;
+        font-family:'SCDream';
     }
 `;
 
@@ -44,9 +45,9 @@ const Share = () => {
                 <Div><Num>{number} 명</Num></Div>
                 <Div><Plus onClick={onIncrease}>+</Plus></Div>
             </Main>
-            <Txt>몇 명에게 쪽지를 받고 싶은지 정해보세요!</Txt>
-            <Txt>최소 2명, 최대 10명까지 가능합니다.</Txt>
-            <ShareBtn onClick={copy}>공유하기</ShareBtn>
+            {/* <Txt>몇 명에게 쪽지를 받고 싶은지 정해보세요!</Txt>
+            <Txt>최소 2명, 최대 10명까지 가능합니다.</Txt> */}
+            <ShareBtn onClick={copy}>URL 공유하기</ShareBtn>
         </>
     );
 };
@@ -54,7 +55,7 @@ const Share = () => {
 export default Share;
 
 const Main = styled.div`
-    margin-top: 50%;
+    margin-top: 56%;
 `
 
 const Div = styled.div`
@@ -68,8 +69,8 @@ const Min = styled.button`
     color: black;
     text-align: center;
     line-height: 10px;
-    height: 26px;
-    width: 26px;
+    height: 22px;
+    width: 22px;
     background-color: #F2E5D5;
     border-radius: 50%;
     border-width: 1.6px;
@@ -80,25 +81,27 @@ const Plus = styled(Min)`
 `
 
 const Num = styled.p`
-    font-size: 26px;
+    font-size: 20px;
 `
 
-const Txt = styled.div`
-    font-size: 14px;
-    color: #b1aea7;
-    margin-top: 4%;
-`
+// const Txt = styled.div`
+//     font-size: 14px;
+//     color: #b1aea7;
+//     margin-top: 4%;
+// `
 
 const ShareBtn = styled.button`
-    margin-top: 30%;
+    margin-top: 44%;
     text-align: center;
-    color: black;
+    color: rgb(79, 79, 79);
     font-weight: bold;
-    font-size: 20px;
-    height: 44px;
-    width: 220px;
+    font-size: 18px;
+    height: 40px;
+    width: 210px;
     background-color: #f0d596;
     border-radius: 20px;
     border-style: solid;
     border-width: 1.6px;
+    font-family:'SCDream';
+    
 `

@@ -5,6 +5,7 @@ import MainLogin from './pages/MainLogin.jsx';
 import Login from './pages/Login.jsx';
 import Memo from './pages/Memo.jsx';
 import Share from './pages/Share.jsx';
+import './App.css';
 
 const App = () => {
   return <Routes>
