@@ -26,7 +26,7 @@ const Main = () => {
     }
 
     return (
-        <>
+        <div style={{overflow: 'hidden', touchAction: 'none'}}>
             <GlobalStyles />
             <MainText>{main}</MainText>
             <br />
@@ -34,7 +34,7 @@ const Main = () => {
             <br />
             <MemoBtn id='btn2' style={{color: 'rgb(59, 59, 59)'}}><Link to="/Login" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>편지 보러가기!</Link></MemoBtn>
             <BtmBx><Img src={Cake} /> </BtmBx>
-        </>
+        </div>
     )
 }
 
@@ -83,7 +83,7 @@ const Img = styled.img`
 const BtmBx = styled.div`
     background-color: #4F8275;
     margin-top: 36%;
-    height: 150px;
+    height: 990px;
     border-color: black;
     border-width: 10px;
 `

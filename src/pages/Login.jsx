@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
 const Login = () => {
 
     const [number, setNumber] = useState(2);
+    const [scroll, setScroll] = useState(false);
 
     const onIncrease = () => {
         if (number>0 && number<10)
@@ -28,11 +29,6 @@ const Login = () => {
     const onDecrease = () => {
         if (number>2 && number<11)
             setNumber(number-1);
-    }
-
-    const clickLogin = () => {  
-        const Fst = document.getElementsByClassName('div');
-        Fst.style.position = 'auto';
     }
 
     const copy = () => {
@@ -48,15 +44,15 @@ const Login = () => {
     return (
         <div style={{position:'fixed'}} class='div'>
             <GlobalStyles />
-            <First class="fst">
+            <First className={scroll ? 'active' : ''}>
                 <Login1>{main}</Login1>
-                <form>
+                <div>
                     <Login2>
-                        <Btn onClick={clickLogin}>로그인 / 회원가입</Btn>
+                        <Btn onClick={() => {setScroll(scroll => !scroll)}}>로그인 / 회원가입</Btn>
                     </Login2>
                     <Input type='text' class='id' placeholder='이름'/>
                     <InputPw type='password' class='pw' placeholder='전화번호'/>
-                </form>
+                </div>
                 <Img src={crl} />
             </First>
             <Second>
@@ -124,12 +120,17 @@ const InputPw = styled(Input)`
 
 const Img = styled.img`
     width: 240px;
-    margin-top: 240px;
+    position: relative;
+    bottom: 0px;
 `
 
 const First = styled.div`
     touch-action: none;
 
+    &.active {
+            margin-top: -600px;
+            transition: 0.5s;
+        }
 `
 
 const Second = styled.div`
