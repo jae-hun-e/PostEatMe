@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+// import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from 'styled-components';
 import reset from "styled-reset";
 import Circle from '../assets/circle.svg';
@@ -13,7 +13,14 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-const Memo = () => {
+const Memo = props => {
+
+    let [memo, setMemo] = useState('');
+
+    function handleMemoInput(e) {
+        setMemo(e.target.value);
+    }
+
     const clickBtn = () => {
         alert('쪽지 달기 성공!');
         window.location.href="/";
@@ -24,13 +31,18 @@ const Memo = () => {
             <GlobalStyles />
             <Img src={Circle} />
             <Div>
-                <Input type='text' 
-                placeholder='ㅇㅇ님께 적고 싶은 말' 
-                minLength={5} 
-                maxLength={40} 
-                title='5자 이상 40자 이내로 입력해주세요'
-                rows="5" cols="5"/>
+                <Input 
+                    onChange={e => handleMemoInput(e)}
+                    type='text' 
+                    placeholder='ㅇㅇ님께 적고 싶은 말' 
+                    minLength={5} 
+                    maxLength={40} 
+                    title='5자 이상 40자 이내로 입력해주세요'
+                    rows="5" cols="5"
+                    style={{resize: 'none'}}
+                />
             </Div>
+            <div>{memo}</div>
             <br />
             <Btn onClick={clickBtn}>작성완료!</Btn>
 
@@ -40,18 +52,6 @@ const Memo = () => {
 };
 
 export default Memo;
-
-const Img = styled.img`
-    display: block;
-    height: 362px;
-    text-align: center;
-    margin: auto;
-    margin-top: -66px;
-`
-
-const Div = styled.div`
-    // left: -30px;
-`
 
 const Input = styled.textarea`
     position: absolute;
@@ -69,9 +69,22 @@ const Input = styled.textarea`
     overflow: scroll;
     border-style: none;
     font-family: 'SCDream';
+    
     ::placeholder {
         color: rgb(195, 195, 195);
     }
+`
+
+const Img = styled.img`
+    display: block;
+    height: 362px;
+    text-align: center;
+    margin: auto;
+    margin-top: -66px;
+`
+
+const Div = styled.div`
+    // left: -30px;
 `
 
 const Btn = styled.button`
