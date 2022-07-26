@@ -1,40 +1,35 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import Circle from '../assets/circle.svg';
-
-const GlobalStyles = createGlobalStyle`
-    ${reset}
-    body {
-        white-space: pre-line;
-        text-align: center;
-        background-color: #F2E5D5;
-    }
-`;
+import Circle from "../assets/circle.svg";
 
 const Memo = () => {
+    // TODO URL 파싱해서
+    //TODO memo 내용 받아서
+    // TODO 해당 유저테이블에 정보 넘기기
+
     const clickBtn = () => {
-        alert('쪽지 달기 성공!');
-        window.location.href="/";
-    }
+        alert("쪽지 달기 성공!");
+        window.location.href = "/";
+    };
 
     return (
         <>
-            <GlobalStyles />
             <Img src={Circle} />
             <Div>
-                <Input type='text' 
-                placeholder='ㅇㅇ님께 적고 싶은 말' 
-                minLength={5} 
-                maxLength={40} 
-                title='5자 이상 40자 이내로 입력해주세요'
-                rows="5" cols="5"/>
+                <Input
+                    type="text"
+                    placeholder="ㅇㅇ님께 적고 싶은 말"
+                    minLength={5}
+                    maxLength={40}
+                    title="5자 이상 40자 이내로 입력해주세요"
+                    rows="5"
+                    cols="5"
+                />
             </Div>
             <br />
             <Btn onClick={clickBtn}>작성완료!</Btn>
-
-            
         </>
     );
 };
@@ -47,11 +42,11 @@ const Img = styled.img`
     text-align: center;
     margin: auto;
     margin-top: -66px;
-`
+`;
 
 const Div = styled.div`
     // left: -30px;
-`
+`;
 
 const Input = styled.textarea`
     position: absolute;
@@ -68,11 +63,11 @@ const Input = styled.textarea`
     border-radius: 50%;
     overflow: scroll;
     border-style: none;
-    font-family: 'SCDream';
+    font-family: "SCDream";
     ::placeholder {
         color: rgb(195, 195, 195);
     }
-`
+`;
 
 const Btn = styled.button`
     margin-top: 17%;
@@ -81,7 +76,7 @@ const Btn = styled.button`
     border-color: black;
     border-radius: 20px;
     background-color: #f0d596;
-    font-size:18px;
+    font-size: 18px;
     color: rgb(59, 59, 59);
-    font-family: 'SCDream';
-`
+    font-family: "SCDream";
+`;

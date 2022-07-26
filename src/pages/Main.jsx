@@ -1,52 +1,50 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from 'styled-components';
-import reset from "styled-reset";
-import Cake from '../assets/cake.svg';
+import styled from "styled-components";
+import Cake from "../assets/cake.svg";
 
 const main = "POST-EAT\nME!";
 
-const GlobalStyles = createGlobalStyle`
-    ${reset}
-    body {
-        white-space: pre-line;
-        text-align: center;
-        background-color: #F2E5D5;
-    }
-`;
-
 const Main = () => {
-
     const ClickBtn = () => {
-        const btn1 = document.getElementById('btn1');
-        const btn2 = document.getElementById('btn2');
+        const btn1 = document.getElementById("btn1");
+        const btn2 = document.getElementById("btn2");
         btn2.style.opacity = "1";
-        btn1.style.color = 'gray';
-
-    }
+        btn1.style.color = "gray";
+    };
 
     return (
-        <div style={{overflow: 'hidden', touchAction: 'none'}}>
-            <GlobalStyles />
+        <div style={{ overflow: "hidden", touchAction: "none" }}>
             <MainText>{main}</MainText>
             <br />
-            <StartBtn id='btn1' onClick={ClickBtn} style={{color: 'rgb(59, 59, 59)'}}>START</StartBtn>
+            <StartBtn id="btn1" onClick={ClickBtn} style={{ color: "rgb(59, 59, 59)" }}>
+                START
+            </StartBtn>
             <br />
-            <MemoBtn id='btn2' style={{color: 'rgb(59, 59, 59)'}}><Link to="/Login" style={{textDecoration:'none', color: 'rgb(59, 59, 59)'}}>편지 보러가기!</Link></MemoBtn>
-            <BtmBx><Img src={Cake} /> </BtmBx>
+            <MemoBtn id="btn2" style={{ color: "rgb(59, 59, 59)" }}>
+                <Link
+                    to="/Login"
+                    style={{ textDecoration: "none", color: "rgb(59, 59, 59)" }}
+                >
+                    편지 보러가기!
+                </Link>
+            </MemoBtn>
+            <BtmBx>
+                <Img src={Cake} />{" "}
+            </BtmBx>
         </div>
-    )
-}
+    );
+};
 
 export default Main;
 
 const MainText = styled.div`
     margin-top: 26%;
     font-size: 58px;
-    color: #EC7698;
+    color: #ec7698;
     text-shadow: -2px 0 #000, 0 4px rgb(47, 47, 47), 4px 0 rgb(47, 47, 47), 0 -2px #000;
-    font-family: 'Forte';
-`
+    font-family: "Forte";
+`;
 
 const StartBtn = styled.button`
     transition: 0.5s;
@@ -59,8 +57,8 @@ const StartBtn = styled.button`
     border-radius: 20px;
     background-color: #f0d596;
     font-size: 18px;
-    font-family: 'SCDream';
-`
+    font-family: "SCDream";
+`;
 const MemoBtn = styled.button`
     width: 170px;
     height: 40px;
@@ -71,19 +69,19 @@ const MemoBtn = styled.button`
     border-radius: 20px;
     background-color: #f0d596;
     font-size: 18px;
-    font-family: 'SCDream';
+    font-family: "SCDream";
     opacity: 0;
-`
+`;
 
 const Img = styled.img`
     margin-top: -30%;
     height: 210px;
-`
+`;
 
 const BtmBx = styled.div`
-    background-color: #4F8275;
+    background-color: #4f8275;
     margin-top: 36%;
     height: 990px;
     border-color: black;
     border-width: 10px;
-`
+`;
