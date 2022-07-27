@@ -54,6 +54,12 @@ const Input = styled.textarea`
     overflow: scroll;
     border-style: none;
     font-family: "SCDream";
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
 
     ::placeholder {
         color: rgb(195, 195, 195);
