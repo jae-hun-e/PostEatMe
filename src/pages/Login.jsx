@@ -1,27 +1,36 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import crl from "../assets/cereal.svg";
+import {useQuery} from "react-query";
+import {fetchUser} from "../api/userApi";
+import axios from "axios";
 
 const main = "POST-EAT ME!";
 
 // TODO 내용 변경시가 아닌 submit했을 때만 state에 저장
 
+const BASE_URL = 'http://15.165.62.51:8000/'
+const TEST_URL = 'http://0.0.0.0:8000'
+
 const Login = () => {
-    // TODO이름 전화번호 받아와서 post
+    // TODO 이름 전화번호 받아와서 post
+
     const [number, setNumber] = useState(2);
     const [scroll, setScroll] = useState(false);
+    const [data, setData] = useState([]);
 
-    const [id, setId] = useState("");
-    const [pw, setPw] = useState("");
-    console.log(id);
-    console.log(pw);
+    const [userData, setUserData] = useState({name: '', phone: '', num: ''})
+    console.log(userData);
 
-    function handleIdInput(e) {
-        setId(e.target.value);
-    }
 
-    function handlePwInput(e) {
-        setPw(e.target.value);
+    useEffect(() => {
+        axios.get(`${TEST_URL}/user`).then(res => setData(res.data))
+    }, []);
+
+    const logIn = () => {
+        if(userData.name.length === 0) alert("이름을 입력해 주세요!")
+        else if(userData.phone.length !== 11) alert("휴대폰 번호 11자리를 입력해주세요!");
+        else setScroll((scroll) => !scroll)
     }
 
     const onIncrease = () => {
@@ -32,11 +41,14 @@ const Login = () => {
         if (number > 2 && number < 11) setNumber(number - 1);
     };
 
-    const copy = () => {
+    const copy = (e) => {
+        setUserData({...userData, num: number})
+        axios.post(`${TEST_URL}/user/`, userData).then(res => console.log(res.data))
+
         const el = document.createElement("input");
         // el.value = window.location.href;
         // TODO 링크에 보내는 유저 정보 포함
-        el.value = window.location.origin + "/memo";
+        el.value = window.location.origin + "/memo" + "";
         document.body.appendChild(el);
         el.select();
         document.execCommand("copy");
@@ -47,28 +59,27 @@ const Login = () => {
 
     return (
         <div style={{ position: "fixed" }} class="div">
+            {data && console.log(data)}
             <First className={scroll ? "active" : ""}>
                 <Login1>{main}</Login1>
                 <div>
                     <Login2>
                         <Btn
-                            onClick={() => {
-                                setScroll((scroll) => !scroll);
-                            }}
+                            onClick={logIn}
                         >
                             로그인 / 회원가입
                         </Btn>
                     </Login2>
                     <Input
-                        onChange={(e) => handleIdInput(e)}
+                        onChange={(e) => setUserData({...userData, name: e.target.value})}
                         type="text"
                         // class='id'
                         placeholder="이름"
                     />
                     <InputPw
-                        onChange={(e) => handlePwInput(e)}
-                        type="password"
-                        // class='pw'
+                        onChange={(e) => setUserData({...userData, phone: e.target.value})}
+                        type="tel"
+                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                         placeholder="전화번호"
                     />
                 </div>
