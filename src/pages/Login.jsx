@@ -1,6 +1,4 @@
-import { isValidInputTimeValue } from "@testing-library/user-event/dist/utils";
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import crl from "../assets/cereal.svg";
 
@@ -10,6 +8,19 @@ const Login = () => {
     // TODO이름 전화번호 받아와서 post
     const [number, setNumber] = useState(2);
     const [scroll, setScroll] = useState(false);
+
+    let [id, setId] = useState("");
+    let [pw, setPw] = useState("");
+    console.log(id);
+    console.log(pw);
+
+    function handleIdInput(e) {
+        setId(e.target.value);
+    }
+
+    function handlePwInput(e) {
+        setPw(e.target.value);
+    }
 
     const onIncrease = () => {
         if (number > 0 && number < 10) setNumber(number + 1);
@@ -46,8 +57,18 @@ const Login = () => {
                             로그인 / 회원가입
                         </Btn>
                     </Login2>
-                    <Input type="text" class="id" placeholder="이름" />
-                    <InputPw type="password" class="pw" placeholder="전화번호" />
+                    <Input
+                        onChange={(e) => handleIdInput(e)}
+                        type="text"
+                        // class='id'
+                        placeholder="이름"
+                    />
+                    <InputPw
+                        onChange={(e) => handlePwInput(e)}
+                        type="password"
+                        // class='pw'
+                        placeholder="전화번호"
+                    />
                 </div>
                 <Img src={crl} />
             </First>

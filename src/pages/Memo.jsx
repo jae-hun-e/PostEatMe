@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import React, { useState } from "react";
+import styled from "styled-components";
 import Circle from "../assets/circle.svg";
 
-const Memo = () => {
-    // TODO URL 파싱해서
-    //TODO memo 내용 받아서
-    // TODO 해당 유저테이블에 정보 넘기기
+const Memo = (props) => {
+    let [memo, setMemo] = useState("");
+
+    function handleMemoInput(e) {
+        setMemo(e.target.value);
+    }
 
     const clickBtn = () => {
         alert("쪽지 달기 성공!");
@@ -19,6 +19,7 @@ const Memo = () => {
             <Img src={Circle} />
             <Div>
                 <Input
+                    onChange={(e) => handleMemoInput(e)}
                     type="text"
                     placeholder="ㅇㅇ님께 적고 싶은 말"
                     minLength={5}
@@ -26,6 +27,7 @@ const Memo = () => {
                     title="5자 이상 40자 이내로 입력해주세요"
                     rows="5"
                     cols="5"
+                    style={{ resize: "none" }}
                 />
             </Div>
             <br />
@@ -35,18 +37,6 @@ const Memo = () => {
 };
 
 export default Memo;
-
-const Img = styled.img`
-    display: block;
-    height: 362px;
-    text-align: center;
-    margin: auto;
-    margin-top: -66px;
-`;
-
-const Div = styled.div`
-    // left: -30px;
-`;
 
 const Input = styled.textarea`
     position: absolute;
@@ -64,9 +54,22 @@ const Input = styled.textarea`
     overflow: scroll;
     border-style: none;
     font-family: "SCDream";
+
     ::placeholder {
         color: rgb(195, 195, 195);
     }
+`;
+
+const Img = styled.img`
+    display: block;
+    height: 362px;
+    text-align: center;
+    margin: auto;
+    margin-top: -66px;
+`;
+
+const Div = styled.div`
+    // left: -30px;
 `;
 
 const Btn = styled.button`
