@@ -4,13 +4,15 @@ import crl from "../assets/cereal.svg";
 
 const main = "POST-EAT ME!";
 
+// TODO 내용 변경시가 아닌 submit했을 때만 state에 저장
+
 const Login = () => {
     // TODO이름 전화번호 받아와서 post
     const [number, setNumber] = useState(2);
     const [scroll, setScroll] = useState(false);
 
-    let [id, setId] = useState("");
-    let [pw, setPw] = useState("");
+    const [id, setId] = useState("");
+    const [pw, setPw] = useState("");
     console.log(id);
     console.log(pw);
 
