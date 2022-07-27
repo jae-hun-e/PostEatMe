@@ -1,52 +1,37 @@
-import React, { useState } from 'react';
-// import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from 'styled-components';
-import reset from "styled-reset";
-import Circle from '../assets/circle.svg';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Circle from "../assets/circle.svg";
 
-const GlobalStyles = createGlobalStyle`
-    ${reset}
-    body {
-        white-space: pre-line;
-        text-align: center;
-        background-color: #F2E5D5;
-    }
-`;
-
-const Memo = props => {
-
-    let [memo, setMemo] = useState('');
+const Memo = (props) => {
+    let [memo, setMemo] = useState("");
 
     function handleMemoInput(e) {
         setMemo(e.target.value);
     }
 
     const clickBtn = () => {
-        alert('쪽지 달기 성공!');
-        window.location.href="/";
-    }
+        alert("쪽지 달기 성공!");
+        window.location.href = "/";
+    };
 
     return (
         <>
-            <GlobalStyles />
             <Img src={Circle} />
             <Div>
-                <Input 
-                    onChange={e => handleMemoInput(e)}
-                    type='text' 
-                    placeholder='ㅇㅇ님께 적고 싶은 말' 
-                    minLength={5} 
-                    maxLength={40} 
-                    title='5자 이상 40자 이내로 입력해주세요'
-                    rows="5" cols="5"
-                    style={{resize: 'none'}}
+                <Input
+                    onChange={(e) => handleMemoInput(e)}
+                    type="text"
+                    placeholder="ㅇㅇ님께 적고 싶은 말"
+                    minLength={5}
+                    maxLength={40}
+                    title="5자 이상 40자 이내로 입력해주세요"
+                    rows="5"
+                    cols="5"
+                    style={{ resize: "none" }}
                 />
             </Div>
-            <div>{memo}</div>
             <br />
             <Btn onClick={clickBtn}>작성완료!</Btn>
-
-            
         </>
     );
 };
@@ -68,12 +53,12 @@ const Input = styled.textarea`
     border-radius: 50%;
     overflow: scroll;
     border-style: none;
-    font-family: 'SCDream';
-    
+    font-family: "SCDream";
+
     ::placeholder {
         color: rgb(195, 195, 195);
     }
-`
+`;
 
 const Img = styled.img`
     display: block;
@@ -81,11 +66,11 @@ const Img = styled.img`
     text-align: center;
     margin: auto;
     margin-top: -66px;
-`
+`;
 
 const Div = styled.div`
     // left: -30px;
-`
+`;
 
 const Btn = styled.button`
     margin-top: 17%;
@@ -94,7 +79,7 @@ const Btn = styled.button`
     border-color: black;
     border-radius: 20px;
     background-color: #f0d596;
-    font-size:18px;
+    font-size: 18px;
     color: rgb(59, 59, 59);
-    font-family: 'SCDream';
-`
+    font-family: "SCDream";
+`;
