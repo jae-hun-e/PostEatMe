@@ -1,39 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import Circle from "../assets/circle.svg";
+import axios from "axios";
+
+
+const BASE_URL = 'http://15.165.62.51:8000/'
+const TEST_URL = 'http://0.0.0.0:8000'
 
 const Memo = (props) => {
-    let [memo, setMemo] = useState("");
 
-    function handleMemoInput(e) {
-        setMemo(e.target.value);
-    }
+  const userData = decodeURI(decodeURIComponent(window.location.href.split('memo/')[1]));
+  // console.log(href.split('memo/')[1])
+  const userName = userData.split(('_'))[0]
+  const userPhone = userData.split(('_'))[1]
 
-    const clickBtn = () => {
-        alert("쪽지 달기 성공!");
-        window.location.href = "/";
-    };
+  const [memoData, setMemo] = useState({name: userName, Memo: ''});
 
-    return (
-        <>
-            <Img src={Circle} />
-            <Div>
-                <Input
-                    onChange={(e) => handleMemoInput(e)}
-                    type="text"
-                    placeholder="ㅇㅇ님께 적고 싶은 말"
-                    minLength={5}
-                    maxLength={40}
-                    title="5자 이상 40자 이내로 입력해주세요"
-                    rows="5"
-                    cols="5"
-                    style={{ resize: "none" }}
-                />
-            </Div>
-            <br />
-            <Btn onClick={clickBtn}>작성완료!</Btn>
-        </>
-    );
+  const memo = useRef("");
+
+  const clickBtn = () => {
+    console.log(memoData)
+    axios.post(`${TEST_URL}/memo/`, memoData).then(res => console.log(res.data))
+    //   alert("쪽지 달기 성공!");
+      // window.location.href = "/";
+  };
+
+  return (
+      <>
+          <Img src={Circle} />
+          <Div>
+              <Input
+                  type="text"
+                  placeholder={`${userName} 님께 적고 싶은 말 `}
+                  minLength={5}
+                  maxLength={40}
+                  title="5자 이상 40자 이내로 입력해주세요"
+                  rows="5"
+                  cols="5"
+                  style={{ resize: "none" }}
+                  onChange={(e) => setMemo({...memoData, Memo: e.target.value})}
+              />
+          </Div>
+          <br />
+          <Btn onClick={clickBtn}>작성완료!</Btn>
+      </>
+  );
 };
 
 export default Memo;
@@ -45,7 +56,7 @@ const Input = styled.textarea`
     margin-top: -217px;
 
     padding-top: 40px;
-    line-height: 50px;
+    line-height: 30px;
     text-align: center;
     font-size: 14px;
     height: 130px;
