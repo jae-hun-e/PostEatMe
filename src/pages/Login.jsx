@@ -26,19 +26,20 @@ const Login = () => {
     let phoneValue = React.createRef();
 
     useEffect(() => {
+        // TODO AWS베포 URL로 변경
         axios.get(`${TEST_URL}/user`).then(res => setDBData(res.data))
         axios.get(`${TEST_URL}/memo`).then(res => setMemo(res.data))
     }, []);
 
     useEffect(()=> {
-        console.log(userData)
-        console.log(num)
+        // console.log(userData)
+        // console.log(num)
     },[num, userData])
 
     const logIn = () => {
 
         // setUserData({...userData, name: nameValue.current.value, phone: phoneValue.current.value})
-        console.log(userData)
+        // console.log(userData)
 
         if(userData.name.length === 0) alert("이름을 입력해 주세요!")
         else if(userData.phone.length !== 11) alert("휴대폰 번호 11자리를 입력해주세요!");
@@ -52,6 +53,7 @@ const Login = () => {
 
                         if (data.num === userMemo.length){ // 찼는지 확인
                             alert("POST EAT ME가 완성되었습니다!")
+                            //TODO netlify URL로 변경
                             window.location.href = window.location.origin + "/open/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
                             return console.log('post eat me')
                         }
@@ -66,11 +68,11 @@ const Login = () => {
                         return console.log('name')
                     }
                 }
-                // else{
-                //     alert("인원수를 설정 후 공유하기를 누르시면 회원가입이 됩니다!")
-                //     setScroll((scroll) => !scroll)
-                //     return console.log('sign')
-                // }
+                else{
+                    alert("인원수를 설정 후 공유하기를 누르시면 회원가입이 됩니다!")
+                    setScroll((scroll) => !scroll)
+                    return console.log('sign')
+                }
             })
         }
     }
@@ -92,20 +94,21 @@ const Login = () => {
 
     const copy = () => {
         setUserData({...userData, num })
-        console.log('number',num)
-        console.log('userData', userData);
+        // console.log('number',num)
+        // console.log('userData', userData);
+        // TODO AWS베포 URL로 변경
         axios.post(`${TEST_URL}/user/`, userData).then(res => console.log(res.data))
 
         const el = document.createElement("input");
-        // el.value = window.location.href;
-        // TODO 링크에 보내는 유저 정보 포함
+
+        //TODO netlify URL로 변경
         el.value = window.location.origin + "/memo/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
         document.body.appendChild(el);
         el.select();
         document.execCommand("copy");
         document.body.removeChild(el);
         alert("링크 복사 완료! 친구들에게 공유해보세요.");
-        // window.location.href = "/";
+        window.location.href = "/";
     };
 
     return (

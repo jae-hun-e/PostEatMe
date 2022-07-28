@@ -27,13 +27,13 @@ const Open = () => {
   const [memoData, setMemoData] = useState([])
 
   useEffect(() => {
+    // TODO AWS베포 URL로 변경
     axios.get(`${TEST_URL}/memo`).then(res => setMemoData(res.data.filter((memo) => memo.name === userName).map((data)=> data.Memo)))
-    console.log(userName)
+    // console.log(userName)
   }, []);
 
   return (
     <div style={{ position: "relative", height: "500px" }}>
-      {console.log('memoData2',memoData)}
       { modalOpen && <Modal modalClose={modalClose} memo={memoData} ></Modal>}
       <Div1 style={{ width: "260px" }}>
         <img src={dst1} onClick={modalClose} />
@@ -54,7 +54,6 @@ const Open = () => {
       <Div5 style={{ width: "280px" }}>
         <img src={dst5} onClick={modalClose}/>
       </Div5>
-      {/* <MemoList/> */}
     </div>
   );
 };

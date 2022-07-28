@@ -19,10 +19,11 @@ const Memo = () => {
   const memo = useRef("");
 
   const clickBtn = () => {
-    console.log(memoData)
+    // console.log(memoData)
+    // TODO AWS베포 URL로 변경
     axios.post(`${TEST_URL}/memo/`, memoData).then(res => console.log(res.data))
-    //   alert("쪽지 달기 성공!");
-      // window.location.href = "/";
+    alert("쪽지 달기 성공!");
+    window.location.href = "/";
   };
 
   return (
