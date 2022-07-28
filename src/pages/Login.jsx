@@ -47,13 +47,15 @@ const Login = () => {
             DBdata.filter((data)=>{
                 if(data.phone === userData.phone){ // 번호 확인
                     if(data.name === userData.name){ // 이름 확인
-                        if (data.num === memoNum.filter((memo) => memo.name === userData.name).length){ // 찼는지 확인
+
+                        const userMemo = memoNum.filter((memo) => memo.name === userData.name);
+
+                        if (data.num === userMemo.length){ // 찼는지 확인
                             alert("POST EAT ME가 완성되었습니다!")
-                            window.location.href = `http://localhost:3000/open`;
+                            window.location.href = window.location.origin + "/open/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
                             return console.log('post eat me')
                         }
-                        else
-                        {
+                        else {
                             alert("로그인 되었습니다!")
                             setScroll((scroll) => !scroll)
                             return console.log('login')
@@ -64,11 +66,11 @@ const Login = () => {
                         return console.log('name')
                     }
                 }
-                else{
-                    alert("인원수를 설정 후 공유하기를 누르시면 회원가입이 됩니다!")
-                    setScroll((scroll) => !scroll)
-                    return console.log('sign')
-                }
+                // else{
+                //     alert("인원수를 설정 후 공유하기를 누르시면 회원가입이 됩니다!")
+                //     setScroll((scroll) => !scroll)
+                //     return console.log('sign')
+                // }
             })
         }
     }

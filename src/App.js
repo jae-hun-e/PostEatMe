@@ -19,7 +19,7 @@ const App = () => {
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/memo/:id" element={<Memo />}></Route>
-                <Route path="/open" element={<Open />}></Route>
+                <Route path="/open/:id" element={<Open />}></Route>
             </Routes>
         </QueryClientProvider>
     );

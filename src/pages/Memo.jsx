@@ -7,7 +7,7 @@ import axios from "axios";
 const BASE_URL = 'http://15.165.62.51:8000/'
 const TEST_URL = 'http://0.0.0.0:8000'
 
-const Memo = (props) => {
+const Memo = () => {
 
   const userData = decodeURI(decodeURIComponent(window.location.href.split('memo/')[1]));
   // console.log(href.split('memo/')[1])
