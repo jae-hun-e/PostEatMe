@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import dst1 from "../assets/dst1.svg";
@@ -6,29 +6,38 @@ import dst2 from "../assets/dst2.svg";
 import dst3 from "../assets/dst3.svg";
 import dst4 from "../assets/dst4.svg";
 import dst5 from "../assets/dst5.svg";
+import Modal from "../components/Modal";
 
 const Open = () => {
+
+    const [modalOpen, setModalOpen] = useState(false)
+    const modalClose = () => {
+        setModalOpen(!modalOpen)
+    }
+
     return (
         <div style={{ position: "relative", height: "500px" }}>
             <Div1 style={{ width: "260px" }}>
-                <img src={dst1} />
+                <img src={dst1} onClick={modalClose} />
             </Div1>
+            { modalOpen && <Modal modalClose={modalClose}></Modal>}
             <Div2 style={{ width: "160px" }}>
-                <img src={dst2} />
+                <img src={dst2} onClick={modalClose}/>
             </Div2>
             <Div3 style={{ width: "260px" }}>
-                <img src={dst3} />
+                <img src={dst3} onClick={modalClose}/>
             </Div3>
             <Txt>
                 <MainTxt>OOO님 편지 확인</MainTxt>
                 <SubTxt>( 디저트들을 눌러보세요! )</SubTxt>
             </Txt>
             <Div4 style={{ width: "300px" }}>
-                <img src={dst4} />
+                <img src={dst4} onClick={modalClose}/>
             </Div4>
             <Div5 style={{ width: "280px" }}>
-                <img src={dst5} />
+                <img src={dst5} onClick={modalClose}/>
             </Div5>
+          {/* <MemoList/> */}
         </div>
     );
 };
