@@ -12,7 +12,7 @@ import axios from "axios";
 const BASE_URL = 'http://15.165.62.51:8000/'
 const TEST_URL = 'http://0.0.0.0:8000'
 
-const Open1 = () => {
+const Open = () => {
 
   const userData = decodeURI(decodeURIComponent(window.location.href.split('open/')[1]));
   // console.log(href.split('memo/')[1])
@@ -58,7 +58,7 @@ const Open1 = () => {
   );
 };
 
-export default Open1;
+export default Open;
 
 const Container = styled.div`
     
