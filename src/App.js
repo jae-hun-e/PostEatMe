@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Main from "./pages/Main.jsx";
-import Login from "./pages/Login.jsx";
-import Memo from "./pages/Memo.jsx";
-import Open from "./pages/Open.jsx";
+import Main from "./pages/Main1.jsx";
+import Login from "./pages/Login1.jsx";
+import Memo from "./pages/Memo1.jsx";
+import Open1 from "./pages/Open1.jsx";
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
@@ -19,7 +19,7 @@ const App = () => {
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/memo/:id" element={<Memo />}></Route>
-                <Route path="/open/:id" element={<Open />}></Route>
+                <Route path="/open/:id" element={<Open1 />}></Route>
             </Routes>
         </QueryClientProvider>
     );

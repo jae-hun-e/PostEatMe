@@ -6,13 +6,13 @@ import dst2 from "../assets/dst2.svg";
 import dst3 from "../assets/dst3.svg";
 import dst4 from "../assets/dst4.svg";
 import dst5 from "../assets/dst5.svg";
-import Modal from "../components/Modal";
+import Modal from "../components/Modal1";
 import axios from "axios";
 
 const BASE_URL = 'http://15.165.62.51:8000/'
 const TEST_URL = 'http://0.0.0.0:8000'
 
-const Open = () => {
+const Open1 = () => {
 
   const userData = decodeURI(decodeURIComponent(window.location.href.split('open/')[1]));
   // console.log(href.split('memo/')[1])
@@ -58,7 +58,7 @@ const Open = () => {
   );
 };
 
-export default Open;
+export default Open1;
 
 const Container = styled.div`
     
