@@ -9,7 +9,8 @@ import dst5 from "../assets/dst5.svg";
 import Modal from "../components/Modal";
 import axios from "axios";
 
-const BASE_URL = 'http://15.165.62.51:8000/'
+// const BASE_URL = 'http://15.165.62.51:8000/'
+const BASE_URL = 'http://44.209.68.143:8000'
 const TEST_URL = 'http://0.0.0.0:8000'
 
 const Open = () => {
