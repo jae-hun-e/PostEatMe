@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-const Modal = ({modalClose, memo}) => {
+const Modal = ({modalClose, memo, num}) => {
   console.log("Modal", memo)
 
   return (

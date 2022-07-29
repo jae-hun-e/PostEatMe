@@ -6,7 +6,7 @@ import dst2 from "../assets/dst2.svg";
 import dst3 from "../assets/dst3.svg";
 import dst4 from "../assets/dst4.svg";
 import dst5 from "../assets/dst5.svg";
-import Modal from "../components/Modal1";
+import Modal from "../components/Modal";
 import axios from "axios";
 
 const BASE_URL = 'http://15.165.62.51:8000/'
@@ -26,6 +26,7 @@ const Open = () => {
 
   const [memoData, setMemoData] = useState([])
 
+
   useEffect(() => {
     // TODO AWS베포 URL로 변경
     axios.get(`${TEST_URL}/memo`).then(res => setMemoData(res.data.filter((memo) => memo.name === userName).map((data)=> data.Memo)))
@@ -34,7 +35,7 @@ const Open = () => {
 
   return (
     <div style={{ position: "relative", height: "500px" }}>
-      { modalOpen && <Modal modalClose={modalClose} memo={memoData} ></Modal>}
+      { modalOpen && <Modal modalClose={modalClose} memo={memoData} num={num}></Modal>}
       <Div1 style={{ width: "260px" }}>
         <img src={dst1} onClick={modalClose} />
       </Div1>

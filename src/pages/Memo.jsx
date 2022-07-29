@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Circle from "../assets/circle.svg";
 import axios from "axios";
@@ -15,20 +15,34 @@ const Memo = () => {
   const userPhone = userData.split(('_'))[1]
 
   const [memoData, setMemo] = useState({name: userName, Memo: ''});
+  const [num, setDbData] = useState(0)
+  const [DbMemoNum, setDbMemo] = useState(0)
 
-  const memo = useRef("");
+
+
+  useEffect(() => {
+    axios.get(`${TEST_URL}/user`).then(res => setDbData(res.data.filter(data=> data.phone === userPhone)[0].num))
+    axios.get(`${TEST_URL}/memo`).then(res => setDbMemo(res.data.filter((memo) => memo.name === userName).length))
+  }, []);
 
   const clickBtn = () => {
     // console.log(memoData)
     // TODO AWS베포 URL로 변경
-    axios.post(`${TEST_URL}/memo/`, memoData).then(res => console.log(res.data))
-    alert("쪽지 달기 성공!");
-    window.location.href = "/";
+    if(num <= DbMemoNum){
+      alert("Post Eat이 가득 찼습니다.")
+    }
+    else{
+      axios.post(`${TEST_URL}/memo/`, memoData).then(res => console.log(res.data))
+      alert("쪽지 달기 성공!");
+      window.location.href = "/";
+    }
   };
 
   return (
       <>
           <Img src={Circle} />
+        {console.log(DbMemoNum)}
+        {console.log(num, userPhone)}
           <Div>
               <Input
                   type="text"
