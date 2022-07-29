@@ -10,7 +10,7 @@ const main = "POST-EAT ME!";
 // TODO 내용 변경시가 아닌 submit했을 때만 state에 저장
 
 // const BASE_URL = 'http://15.165.62.51:8000'
-const BASE_URL = 'http://44.209.68.143:8000'
+const BASE_URL = 'https://44.209.68.143:8000'
 const TEST_URL = 'http://0.0.0.0:8000'
 
 const Login = () => {
