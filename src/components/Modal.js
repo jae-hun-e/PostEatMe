@@ -1,27 +1,40 @@
 import React from 'react'
 import styled from "styled-components";
-import MemoList from "../components/MemoList";
 
-const Modal = ({modalClose}) => {
-    return (
-        <Modal__container>
-            <MModal>
-                <Modal__button onClick={modalClose}>X</Modal__button>
-                <br /><br /><br />
-                <MemoList />
-            </MModal>
-        </Modal__container>
-    )
+const Modal = ({modalClose, memo, num}) => {
+  console.log("Modal", memo)
+
+  return (
+    <Modal__container>
+      <MModal>
+        <Modal__button onClick={modalClose}>X</Modal__button>
+        <br /><br /><br />
+        <MemoDiv>
+          {memo.map((data, idx) => <MemoList key={idx}>{idx+1}번 : {data}</MemoList>)}
+        </MemoDiv>
+      </MModal>
+    </Modal__container>
+  )
 }
 
 export default Modal;
 
-// const MemoList = styled.p`
-//     padding-top: 10px;
-//     color: black;
-//     font-size: 14px;
-//     font-family: "SCDream";
-// `
+const MemoDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  
+`
+const MemoList = styled.p`
+  padding-top: 10px;
+  color: black;
+  font-size: 14px;
+  font-family: "SCDream";
+  margin-bottom: 10px;
+`
 
 const Modal__container = styled.div`
     width: 100%;
@@ -54,7 +67,6 @@ const Modal__button = styled.button`
     left:-40.6%;
     top: 4%;
     // transform: translate(-50%, -50%);
-
     border-width: 1.2px;
     border-color: black;
     border-radius: 6px;

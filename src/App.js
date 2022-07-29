@@ -7,18 +7,21 @@ import Open from "./pages/Open.jsx";
 import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import {QueryClientProvider, QueryClient} from "react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
             <GlobalStyles />
             <Routes>
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/memo/:id" element={<Memo />}></Route>
-                <Route path="/open" element={<Open />}></Route>
+                <Route path="/open/:id" element={<Open />}></Route>
             </Routes>
-        </>
+        </QueryClientProvider>
     );
 };
 
