@@ -10,7 +10,7 @@ const main = "POST-EAT ME!";
 // TODO 내용 변경시가 아닌 submit했을 때만 state에 저장
 
 const BASE_URL = 'http://15.165.62.51:8000'
-const TEST_URL = 'http://0.0.0.0:8000'
+// const TEST_URL = 'http://0.0.0.0:8000'
 
 const Login = () => {
     // TODO 이름 전화번호 갯수 받아와서 post
@@ -27,8 +27,8 @@ const Login = () => {
 
     useEffect(() => {
         // TODO AWS베포 URL로 변경
-        axios.get(`${TEST_URL}/user`).then(res => setDBData(res.data))
-        axios.get(`${TEST_URL}/memo`).then(res => setMemo(res.data))
+        axios.get(`${BASE_URL}/user`).then(res => setDBData(res.data))
+        axios.get(`${BASE_URL}/memo`).then(res => setMemo(res.data))
     }, []);
 
     useEffect(()=> {
@@ -97,7 +97,7 @@ const Login = () => {
         // console.log('number',num)
         // console.log('userData', userData);
         // TODO AWS베포 URL로 변경
-        axios.post(`${TEST_URL}/user/`, userData).then(res => console.log(res.data))
+        axios.post(`${BASE_URL}/user/`, userData).then(res => console.log(res.data))
 
         const el = document.createElement("input");
 
