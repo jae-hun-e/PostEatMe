@@ -28,8 +28,8 @@ const Login = () => {
 
     useEffect(() => {
         // TODO AWS베포 URL로 변경
-        axios.get(`${TEST_URL}/user`).then(res => setDBData(res.data))
-        axios.get(`${TEST_URL}/memo`).then(res => setMemo(res.data))
+        axios.get(`${BASE_URL}/user`).then(res => setDBData(res.data))
+        axios.get(`${BASE_URL}/memo`).then(res => setMemo(res.data))
     }, []);
 
     useEffect(()=> {
@@ -98,7 +98,7 @@ const Login = () => {
         // console.log('number',num)
         // console.log('userData', userData);
         // TODO AWS베포 URL로 변경
-        axios.post(`${TEST_URL}/user/`, userData).then(res => console.log(res.data))
+        axios.post(`${BASE_URL}/user/`, userData).then(res => console.log(res.data))
 
         const el = document.createElement("input");
 

@@ -4,6 +4,7 @@ import Circle from "../assets/circle.svg";
 import axios from "axios";
 
 
+
 // const BASE_URL = 'http://15.165.62.51:8000/'
 const BASE_URL = 'http://44.209.68.143:8000'
 const TEST_URL = 'http://0.0.0.0:8000'
@@ -22,8 +23,8 @@ const Memo = () => {
 
 
   useEffect(() => {
-    axios.get(`${TEST_URL}/user`).then(res => setDbData(res.data.filter(data=> data.phone === userPhone)[0].num))
-    axios.get(`${TEST_URL}/memo`).then(res => setDbMemo(res.data.filter((memo) => memo.name === userName).length))
+    axios.get(`${BASE_URL}/user`).then(res => setDbData(res.data.filter(data=> data.phone === userPhone)[0].num))
+    axios.get(`${BASE_URL}/memo`).then(res => setDbMemo(res.data.filter((memo) => memo.name === userName).length))
   }, []);
 
   const clickBtn = () => {
@@ -33,7 +34,7 @@ const Memo = () => {
       alert("Post Eat이 가득 찼습니다.")
     }
     else{
-      axios.post(`${TEST_URL}/memo/`, memoData).then(res => console.log(res.data))
+      axios.post(`${BASE_URL}/memo/`, memoData).then(res => console.log(res.data))
       alert("쪽지 달기 성공!");
       window.location.href = "/";
     }

@@ -13,6 +13,7 @@ import axios from "axios";
 const BASE_URL = 'http://44.209.68.143:8000'
 const TEST_URL = 'http://0.0.0.0:8000'
 
+
 const Open = () => {
 
   const userData = decodeURI(decodeURIComponent(window.location.href.split('open/')[1]));
@@ -30,13 +31,13 @@ const Open = () => {
 
   useEffect(() => {
     // TODO AWS베포 URL로 변경
-    axios.get(`${TEST_URL}/memo`).then(res => setMemoData(res.data.filter((memo) => memo.name === userName).map((data)=> data.Memo)))
-    // console.log(userName)
+    axios.get(`${BASE_URL}/memo`).then(res => setMemoData(res.data.filter((memo) => memo.name === userName).map((data)=> data.Memo)))
+    console.log(userName)
   }, []);
 
   return (
     <div style={{ position: "relative", height: "500px" }}>
-      { modalOpen && <Modal modalClose={modalClose} memo={memoData} num={num}></Modal>}
+      { modalOpen && <Modal modalClose={modalClose} memo={memoData}></Modal>}
       <Div1 style={{ width: "260px" }}>
         <img src={dst1} onClick={modalClose} />
       </Div1>
