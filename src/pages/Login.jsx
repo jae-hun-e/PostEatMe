@@ -9,8 +9,8 @@ const main = "POST-EAT ME!";
 
 // TODO 내용 변경시가 아닌 submit했을 때만 state에 저장
 
-// const BASE_URL = 'http://15.165.62.51:8000'
-const BASE_URL = 'https://44.209.68.143:8000'
+const BASE_URL = 'http://15.165.62.51:8000'
+// const BASE_URL = 'https://44.209.68.143:8000'
 const TEST_URL = 'http://0.0.0.0:8000'
 
 const Login = () => {
@@ -55,7 +55,7 @@ const Login = () => {
                         if (data.num === userMemo.length){ // 찼는지 확인
                             alert("POST EAT ME가 완성되었습니다!")
                             //TODO netlify URL로 변경
-                            window.location.href = window.location.origin + "/open/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
+                            window.location.href = "https://post-eat-me.netlify.app/" + "/open/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
                             return console.log('post eat me')
                         }
                         else {
@@ -103,7 +103,7 @@ const Login = () => {
         const el = document.createElement("input");
 
         //TODO netlify URL로 변경
-        el.value = window.location.origin + "/memo/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
+        el.value = "https://post-eat-me.netlify.app" + "/memo/" + encodeURI(encodeURIComponent(userData.name))+"_"+userData.phone;
         document.body.appendChild(el);
         el.select();
         document.execCommand("copy");
